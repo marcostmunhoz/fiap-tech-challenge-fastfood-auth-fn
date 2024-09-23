@@ -1,0 +1,22 @@
+{
+  "name": "fiap-tech-challenge-fastfood-auth-fn",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start:dev": "functions-framework --target=handler --signature-type=http"
+  },
+  "keywords": [],
+  "author": "Marcos T Munhoz <3648104+marcostmunhoz@users.noreply.github.com>",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@google-cloud/functions-framework": "^3.4.2"
+  },
+  "dependencies": {
+    "cpf-cnpj-validator": "^1.0.3",
+    "dotenv": "^16.4.5",
+    "joi": "^17.13.3",
+    "jsonwebtoken": "^9.0.2",
+    "mysql2": "^3.11.0"
+  }
+}
