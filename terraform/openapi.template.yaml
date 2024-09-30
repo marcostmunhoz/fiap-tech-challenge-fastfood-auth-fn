@@ -1,0 +1,25 @@
+swagger: "2.0"
+info:
+  title: FIAP Tech Challenge - Fastfood Kiosk Auth Function
+  description: A fastfood kiosk auth serverless function.
+  version: 1.0.0
+schemes:
+  - https
+produces:
+  - application/json
+paths:
+  /v1/authenticate:
+    post:
+      summary: Find or create a new customer based on the CPF, returning a JWT token for that customer.
+      operationId: auth
+      x-google-backend:
+        address: "${function_url}"
+      responses:
+        "200":
+          description: A successful response
+          schema:
+            type: object
+            properties:
+              token:
+                type: string
+                example: "some-jwt-token"

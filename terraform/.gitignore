@@ -1,0 +1,5 @@
+.terraform
+openapi.yaml
+terraform.tfstate.backup
+source.zip
+.env
