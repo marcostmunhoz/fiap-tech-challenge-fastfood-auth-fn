@@ -61,6 +61,13 @@ resource "google_cloudfunctions2_function" "function" {
     available_cpu         = "0.167"
     available_memory      = "128Mi"
     service_account_email = google_service_account.function_invoker_sa.email
+    environment_variables = {
+      "MYSQL_DATABASE_HOST"     = var.db_host
+      "MYSQL_DATABASE_USERNAME" = var.db_username
+      "MYSQL_DATABASE_PASSWORD" = var.db_password
+      "MYSQL_DATABASE_NAME"     = var.db_name
+      "JWT_SECRET"              = var.jwt_secret
+    }
   }
 }
 
