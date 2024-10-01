@@ -1,3 +1,12 @@
+data "terraform_remote_state" "sql_instance" {
+  backend = "gcs"
+  config = {
+    bucket         = local.monorepo.bucket
+    prefix         = local.monorepo.prefix
+    encryption_key = var.monorepo_state_encryption_key
+  }
+}
+
 resource "null_resource" "zip_source" {
   triggers = {
     always_run = "${timestamp()}"
@@ -62,7 +71,7 @@ resource "google_cloudfunctions2_function" "function" {
     available_memory      = "128Mi"
     service_account_email = google_service_account.function_invoker_sa.email
     environment_variables = {
-      "MYSQL_DATABASE_HOST"     = var.db_host
+      "MYSQL_DATABASE_HOST"     = data.terraform_remote_state.sql_instance.outputs.cloud_sql_instance_ip
       "MYSQL_DATABASE_USERNAME" = var.db_username
       "MYSQL_DATABASE_PASSWORD" = var.db_password
       "MYSQL_DATABASE_NAME"     = var.db_name
