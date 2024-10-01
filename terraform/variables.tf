@@ -2,6 +2,7 @@
 variable "db_username" {
   description = "Database username"
   type        = string
+  default     = "monolith"
 }
 
 variable "db_password" {
@@ -13,6 +14,7 @@ variable "db_password" {
 variable "db_name" {
   description = "Database name"
   type        = string
+  default     = "monolith"
 }
 
 variable "jwt_secret" {
